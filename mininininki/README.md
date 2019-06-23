@@ -1,4 +1,2 @@
-##hackathon
-1. ÆÀÀå ±Ç¿µ¾ð
-2. ÆÀ¿ø Á¶½ÂÇö
-3. ÆÀ¿ø ±è¹Î±â
+## hackathon
+### ê¹€ë¯¼ê¸° í´ë”
