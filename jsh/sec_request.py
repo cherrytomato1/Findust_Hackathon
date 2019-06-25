@@ -4,6 +4,7 @@ import time
 import threading
 from operator import eq
 from mfrc522 import SimpleMFRC522
+GPIO.setwarnings(False)
 
 reader = SimpleMFRC522()
 
@@ -22,21 +23,19 @@ def open_close():## onopen requests
             nowtime = round(time.time()-basic_time)
             
 def scan_nfc():
-    try:
-        while 1:
-            id,text= reader.read()
-            print(id)
-            print(text)
-            data = {'Test':id}
-            response = requests.post('http://kyu9341.cafe24.com/TestText.php',data=data)
-            time.sleep(1)              
-    finally:
-        GPIO.cleanup()
-        
+    id,text= reader.read()
+    print(id)
+    print(text)
+    data = {'Test':id}
+    response = requests.post('http://kyu9341.cafe24.com/TestText.php',data=data)
+    time.sleep(1)
+    print("scan end")
+
         
 t1 = threading.Thread(target = open_close)
-t2 = threading.Thread(target = scan_nfc)
 t1.start()
-t2.start()
+
+while 1:
+    scan_nfc()
 
 
