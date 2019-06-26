@@ -53,7 +53,7 @@ class uidReader :
         GPIO.cleanup()
 
 
-    def init() :
+    def init(self) :
 # Hook the SIGINT
         signal.signal(signal.SIGINT, end_read)
 
