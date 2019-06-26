@@ -34,6 +34,11 @@ import signal
 class uidReader :
     continue_reading = True
 
+# Hook the SIGINT
+    signal.signal(signal.SIGINT, end_read)
+
+# Create an object of the class MFRC522
+    MIFAREReader = MFRC522.MFRC522()
 
 # function to read uid an conver it to a string
 
@@ -54,11 +59,7 @@ class uidReader :
 
 
     def init(self) :
-# Hook the SIGINT
-        signal.signal(signal.SIGINT, end_read)
 
-# Create an object of the class MFRC522
-        MIFAREReader = MFRC522.MFRC522()
 
 # Welcome message
         print("Welcome to the MFRC522 data read example")
