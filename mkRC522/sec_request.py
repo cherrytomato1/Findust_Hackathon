@@ -8,8 +8,10 @@ from operator import eq
 #import myRC522
 #import mfrc522
 import uidReadmd
+import MFRC522
 
-from mfrc522 import SimpleMFRC522
+#from mfrc522 import SimpleMFRC522
+
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 control_pins = [7,11,13,15] ## 1 2
