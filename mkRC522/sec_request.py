@@ -48,8 +48,12 @@ def open_close():## onopen requests
     while 1:
         if(nowtime > 9):## request once in 10 secs
             response2 = requests.post('http://kyu9341.cafe24.com/ValidateTag.php')
-            onoff = response2.json()
-            print(response2.text)
+            onoff = response2.json()["OnOff"]
+            if onoff is True:
+                print("box open")
+            else:
+                print("box close")
+            
             basic_time = time.time()
         
         if(nowtime != round(time.time()-basic_time)):
@@ -66,19 +70,24 @@ def scan_nfc():
         
         print(id)
 
-        data = {'ID':id}
+        data = {'CardNum':id}
         response2 = requests.post('http://kyu9341.cafe24.com/ValidateTag.php',data=data)
-        
+        print(response2.json())
         onoff = response2.json()['OnOff']#box open or close?
         validate = response2.json()['Validate']# used box 
-        
+        existUser = response2.json()['existUser']
         if onoff is True:
             print('open')
-            if validate is True:
-                run_wheel()
-                print('take mask')
+            if existUser is True:
+                print("you exist user")
+                if validate is True:
+                    run_wheel()
+                    print('take mask')
+            
+                else:
+                   print("but you already use")
             else:
-                print("but you can't")
+                print("you not exist")
             
         else:
             print('close')

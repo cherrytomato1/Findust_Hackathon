@@ -63,8 +63,6 @@ class uidReader :
         #global continue_reading
 
 # Welcome message
-        print("Welcome to the MFRC522 data read example")
-        print("Press Ctrl-C to stop.")
 
 # This loop keeps checking for chips.
 # If one is near it will get the UID and authenticate
