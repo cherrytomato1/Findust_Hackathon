@@ -33,7 +33,6 @@ import signal
 
 class uidReader :
     continue_reading = True
-    end_read
 
 
 # function to read uid an conver it to a string
@@ -47,16 +46,16 @@ class uidReader :
 
 
 # Capture SIGINT for cleanup when the script is aborted
-    def end_read(signal, frame):
-        global continue_reading
-        print("Ctrl+C captured, ending read.")
-        continue_reading = False
-        GPIO.cleanup()
+ #   def end_read(signal, frame):
+ #       global continue_reading
+  #      print("Ctrl+C captured, ending read.")
+  #      continue_reading = False
+ #       GPIO.cleanup()
 
 
     def init(self) :
 # Hook the SIGINT
-        signal.signal(signal.SIGINT, end_read)
+   #     signal.signal(signal.SIGINT, end_read)
 
 # Create an object of the class MFRC522
         MIFAREReader = MFRC522.MFRC522()
