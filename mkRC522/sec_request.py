@@ -42,11 +42,11 @@ def run_wheel():
     
         
 def open_close():## onopen requests
-    basic_time = time.time()## 기준 시간
+    basic_time = time.time()## basic time
     nowtime = round(time.time()-basic_time)
     
     while 1:
-        if(nowtime > 9):## 10 초에 한번씩 요청
+        if(nowtime > 9):## request once in 10 secs
             response2 = requests.post('http://kyu9341.cafe24.com/ValidateTag.php')
             onoff = response2.json()
             print(response2.text)
