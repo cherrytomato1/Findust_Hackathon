@@ -31,7 +31,7 @@ halfstep_seq = [
 ]
 
 #reader = SimpleMFRC522()
-myreader= uidReadmduidReader()
+myreader= uidReadmd.uidReader()
 #reader = myRC522.myRC522()
 
 def run_wheel():
