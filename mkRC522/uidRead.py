@@ -68,14 +68,12 @@ class uidReader :
 
     # Scan for cards
         (status, TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
-
     # If a card is found
-    
         if status == MIFAREReader.MI_OK:
             print ("Card detected")
 
         # Get the UID of the card
-        (status, uid) = MIFAREReader.MFRC522_SelectTagSN()
+            (status, uid) = MIFAREReader.MFRC522_SelectTagSN()
         # If we have the UID, continue
             if status == MIFAREReader.MI_OK:
                 print("Card read UID: %s" % uidToString(uid))

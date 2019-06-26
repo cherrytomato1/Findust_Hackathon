@@ -76,8 +76,9 @@ while continue_reading:
         # If we have the UID, continue
         if status == MIFAREReader.MI_OK:
             print("Card read UID: %s" % uidToString(uid))
-	    return uidToString(uid)
+            #print(uidToString(uid))
+        
         else:
             print("Authentication error")
-	    return ("ERROR")
+            #return ("ERROR")
 
