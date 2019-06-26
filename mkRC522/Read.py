@@ -35,6 +35,7 @@ continue_reading = True
 
 # function to read uid an conver it to a string
 
+
 def uidToString(uid):
     mystring = ""
     for i in uid:
@@ -73,9 +74,10 @@ while continue_reading:
         # Get the UID of the card
         (status, uid) = MIFAREReader.MFRC522_SelectTagSN()
         # If we have the UID, continue
-	MIFAREReader.MFRC522_Read(blk)
         if status == MIFAREReader.MI_OK:
             print("Card read UID: %s" % uidToString(uid))
+	    return uidToString(uid)
         else:
             print("Authentication error")
+	    return ("ERROR")
 
