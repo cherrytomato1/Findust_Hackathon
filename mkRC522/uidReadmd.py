@@ -41,7 +41,7 @@ class uidReader :
     def uidToString(self,uid):
         mystring = ""
         for i in uid:
-            mystring = format(i, '02X') + mystring
+            mystring = mystring + format(i, '02X')
         return mystring
 
 
