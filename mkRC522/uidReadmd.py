@@ -80,7 +80,7 @@ class uidReader :
                 (status, uid) = MIFAREReader.MFRC522_SelectTagSN()
         # If we have the UID, continue
                 if status == MIFAREReader.MI_OK:
-                    print("Card read UID: %s" % uidToString(uid))
+                    #print("Card read UID: %s" % uidToString(uid))
                     return uid
                 else:
                     print("Authenticatin error")
