@@ -52,31 +52,35 @@ class uidReader :
         continue_reading = False
         GPIO.cleanup()
 
+
+    def init() :
 # Hook the SIGINT
-    signal.signal(signal.SIGINT, end_read)
+        signal.signal(signal.SIGINT, end_read)
 
 # Create an object of the class MFRC522
-    MIFAREReader = MFRC522.MFRC522()
+        MIFAREReader = MFRC522.MFRC522()
 
 # Welcome message
-    print("Welcome to the MFRC522 data read example")
-    print("Press Ctrl-C to stop.")
+        print("Welcome to the MFRC522 data read example")
+        print("Press Ctrl-C to stop.")
 
 # This loop keeps checking for chips.
 # If one is near it will get the UID and authenticate
-    while continue_reading:
+        while continue_reading:
 
     # Scan for cards
-        (status, TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
+            (status, TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
     # If a card is found
-        if status == MIFAREReader.MI_OK:
-            print ("Card detected")
+            if status == MIFAREReader.MI_OK:
+                print ("Card detected")
 
         # Get the UID of the card
-            (status, uid) = MIFAREReader.MFRC522_SelectTagSN()
+                (status, uid) = MIFAREReader.MFRC522_SelectTagSN()
         # If we have the UID, continue
-            if status == MIFAREReader.MI_OK:
-                print("Card read UID: %s" % uidToString(uid))
-            else:
-                print("Authenticatin error")
+                if status == MIFAREReader.MI_OK:
+                    print("Card read UID: %s" % uidToString(uid))
+                    return uid
+                else:
+                    print("Authenticatin error")
+                    return ("error")
 
