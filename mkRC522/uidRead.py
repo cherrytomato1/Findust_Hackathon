@@ -34,11 +34,12 @@ import signal
 class uidReader :
     continue_reading = True
 
+    uid=[]
 
 # function to read uid an conver it to a string
 
 
-    def uidToString(uid):
+    def uidToString():
         mystring = ""
         for i in uid:
             mystring = format(i, '02X') + mystring
@@ -76,7 +77,7 @@ class uidReader :
             (status, uid) = MIFAREReader.MFRC522_SelectTagSN()
         # If we have the UID, continue
             if status == MIFAREReader.MI_OK:
-                print("Card read UID: %s" % uidToString(uid))
+                print("Card read UID: %s" % uidToString())
             else:
                 print("Authenticatin error")
 
