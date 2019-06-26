@@ -70,6 +70,7 @@ class uidReader :
         (status, TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
 
     # If a card is found
+    
         if status == MIFAREReader.MI_OK:
             print ("Card detected")
 
@@ -79,5 +80,5 @@ class uidReader :
             if status == MIFAREReader.MI_OK:
                 print("Card read UID: %s" % uidToString(uid))
             else:
-                print("Authentication error")
+                print("Authenticatin error")
 
