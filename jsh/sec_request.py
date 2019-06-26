@@ -5,37 +5,71 @@ import threading
 from operator import eq
 from mfrc522 import SimpleMFRC522
 GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+control_pins = [7,11,13,15] ## 1 2
+                            ## 3 4
+for pin in control_pins:
+  GPIO.setup(pin, GPIO.OUT)
+  GPIO.output(pin, 0)
+halfstep_seq = [
+  [1,0,0,0],
+  [1,1,0,0],
+  [0,1,0,0],
+  [0,1,1,0],
+  [0,0,1,0],
+  [0,0,1,1],
+  [0,0,0,1],
+  [1,0,0,1]
+]
 
 reader = SimpleMFRC522()
 
+def run_wheel():
+    GPIO.setmode(GPIO.BOARD)
+    for i in range(1,514):
+      for halfstep in range(8):
+        for pin in range(4):
+          GPIO.output(control_pins[pin], halfstep_seq[halfstep][pin])
+        time.sleep(0.001)
+    
+        
 def open_close():## onopen requests
     basic_time = time.time()## 기준 시간
     nowtime = round(time.time()-basic_time)
+    
     while 1:
-        
         if(nowtime > 9):## 10 초에 한번씩 요청
             response2 = requests.get('http://kyu9341.cafe24.com/TestText.php')
+            onoff = response2.json()
             print(response2.text)
             basic_time = time.time()
         
         if(nowtime != round(time.time()-basic_time)):
             print(round(time.time()-basic_time))
             nowtime = round(time.time()-basic_time)
+        time.sleep(0.001)
             
 def scan_nfc():
-    id,text= reader.read()
-    print(id)
-    print(text)
-    data = {'Test':id}
-    response = requests.post('http://kyu9341.cafe24.com/TestText.php',data=data)
-    time.sleep(1)
-    print("scan end")
-
+    while 1:
+        id,text= reader.read()
+        print(id)
+        print(text)
+        data = {'Test':id}
+        response2 = requests.get('http://kyu9341.cafe24.com/TestText.php')
+        onoff = response2.json()
         
-t1 = threading.Thread(target = open_close)
-t1.start()
+        if onoff['success'] is True:
+            response = requests.post('http://kyu9341.cafe24.com/TestText.php',data=data)
+            print('open')
+            run_wheel()
+        else:
+            print('close')
+        time.sleep(1)
 
-while 1:
-    scan_nfc()
+t1 = threading.Thread(target = open_close)
+t2 = threading.Thread(target = scan_nfc)
+t1.start()
+t2.start()
+
 
 
