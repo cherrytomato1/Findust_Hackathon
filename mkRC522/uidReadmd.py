@@ -32,7 +32,7 @@ import signal
 
 
 class uidReader :
-    continue_reading = True
+    global continue_reading = True
 
 
 # function to read uid an conver it to a string
@@ -59,7 +59,7 @@ class uidReader :
 
 # Create an object of the class MFRC522
         MIFAREReader = MFRC522.MFRC522()
-        global continue_reading
+        #global continue_reading
 
 # Welcome message
         print("Welcome to the MFRC522 data read example")
