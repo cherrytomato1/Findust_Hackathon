@@ -73,7 +73,7 @@ while continue_reading:
         # Get the UID of the card
         (status, uid) = MIFAREReader.MFRC522_SelectTagSN()
         # If we have the UID, continue
-	print("%s" % MIFAREReader.Read_MFRC522)
+	MIFAREReader.MFRC522_Read(blk)
         if status == MIFAREReader.MI_OK:
             print("Card read UID: %s" % uidToString(uid))
         else:
