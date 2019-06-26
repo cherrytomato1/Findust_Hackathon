@@ -2,8 +2,12 @@ import RPi.GPIO as GPIO
 import requests
 import time
 import threading
+
 from operator import eq
-from mfrc522 import SimpleMFRC522
+
+import myRC522
+#import mfrc522
+#from mfrc522 import SimpleMFRC522
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 control_pins = [7,11,13,15] ## 1 2
@@ -22,7 +26,8 @@ halfstep_seq = [
   [1,0,0,1]
 ]
 
-reader = SimpleMFRC522()
+#reader = SimpleMFRC522()
+reader = myRC522.myRC522()
 
 def run_wheel():
     GPIO.setmode(GPIO.BOARD)
@@ -39,7 +44,7 @@ def open_close():## onopen requests
     
     while 1:
         if(nowtime > 9):## 10 초에 한번씩 요청
-            response2 = requests.get('http://kyu9341.cafe24.com/TestText.php')
+            response2 = requests.get('http://kyu9341.cafe24.com/ValidateTag.php')
             onoff = response2.json()
             print(response2.text)
             basic_time = time.time()
@@ -54,12 +59,12 @@ def scan_nfc():
         id,text= reader.read()
         print(id)
         print(text)
-        data = {'Test':id}
-        response2 = requests.get('http://kyu9341.cafe24.com/TestText.php')
+        data = {'ID':id}
+        response2 = requests.get('http://kyu9341.cafe24.com/ValidateTag.php')
         onoff = response2.json()
         
         if onoff['success'] is True:
-            response = requests.post('http://kyu9341.cafe24.com/TestText.php',data=data)
+            response = requests.post('http://kyu9341.cafe24.com/ValidateTag.php',data=data)
             print('open')
             run_wheel()
         else:
