@@ -5,12 +5,10 @@ import threading
 
 from operator import eq
 
-#import myRC522
-#import mfrc522
+
 import uidReadmd
 import MFRC522
 
-#from mfrc522 import SimpleMFRC522
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
@@ -30,9 +28,9 @@ halfstep_seq = [
   [1,0,0,1]
 ]
 
-#reader = SimpleMFRC522()
+
 reader= uidReadmd.uidReader()
-#reader = myRC522.myRC522()
+
 
 def run_wheel():
     GPIO.setmode(GPIO.BOARD)
@@ -63,11 +61,11 @@ def open_close():## onopen requests
 def scan_nfc():
     while 1:
         global onoff
-        #id,text= reader.read()
+
         id = reader.uidToString(reader.init())
         
         print(id)
-        #print(text)
+
         data = {'ID':id}
         response2 = requests.post('http://kyu9341.cafe24.com/ValidateTag.php',data=data)
         
