@@ -38,7 +38,7 @@ class uidReader :
 # function to read uid an conver it to a string
 
 
-    def uidToString(uid):
+    def uidToString(self,uid):
         mystring = ""
         for i in uid:
             mystring = format(i, '02X') + mystring
