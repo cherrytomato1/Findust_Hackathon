@@ -46,13 +46,12 @@ class myRC522:
     status = self.READER.MFRC522_Auth(self.READER.PICC_AUTHENT1A, 11, self.KEY, uid)
     data = []
     text_read = ''
-   # if status == self.READER.MI_OK:
-    if True :
-        for block_num in self.BLOCK_ADDRS:
-            block = self.READER.MFRC522_Read(block_num) 
-            if block:
-            		data += block
-        if data:
+    #if status == self.READER.MI_OK:
+    for block_num in self.BLOCK_ADDRS:
+        block = self.READER.MFRC522_Read(block_num) 
+        if block:
+       		data += block
+    if data:
              text_read = ''.join(chr(i) for i in data)
     self.READER.MFRC522_StopCrypto1()
     return id, text_read
