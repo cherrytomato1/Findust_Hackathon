@@ -3,6 +3,11 @@
 # 스마트 미세먼지 마스크 분배 박스
 미세먼지로 인한 국민건강위협에 대비하여 마스크 공급의 문제점 해결
 
+# 팀 구성
+1. 팀장 권영언
+2. 팀원 김민기
+3. 팀원 조승현
+
 # 개요
 - 지역별 공공장소 등 유동인구수가 많은 위치에 스마트 미세먼지 마스크 분배 박스 설치
 - 실시간으로 통계청에서 미세먼지 정보를 받아와 어플로 미세먼지가 위험 수준인 지역 알림을 주고 그 지역 인근에 있는 박스 잠금 해제 및 바스크가 비치된 위치 제공을 해주며 지역 마스크 재고 확인 가능
@@ -27,11 +32,19 @@
 - Raspberrypi
 - Motor
 
-## 제작 결과물 예상도
+## 제작 과정
+### 구상도
+![scatch](https://github.com/wjrmffldrhrl/hackathon/blob/master/scatch.jpg)  
+
+### 어플리케이션
+![app](https://github.com/wjrmffldrhrl/hackathon/blob/master/application.PNG)
+
+### 하드웨어
+![hd](https://github.com/wjrmffldrhrl/hackathon/blob/master/%EC%A0%9C%EC%9E%91.jpg)
+
+# 결과
+## 완성품
+
+## 수상
 
 
-
-# 팀
-1. 팀장 권영언
-2. 팀원 김민기
-3. 팀원 조승현
