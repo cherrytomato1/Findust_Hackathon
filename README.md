@@ -1,3 +1,4 @@
+![logo](https://github.com/wjrmffldrhrl/hackathon/blob/master/Logo.png)
 
 # 스마트 미세먼지 마스크 분배 박스
 미세먼지로 인한 국민건강위협에 대비하여 마스크 공급의 문제점 해결
