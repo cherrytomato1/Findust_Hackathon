@@ -54,5 +54,5 @@
 ![app](https://github.com/cherrytomato1/Findust_Hackathon/blob/master/images/application.PNG)
 
 ## 수상
-![reward](https://github.com/cherrytomato1/Findust_Hackathon/blob/master/images/reward.JPG)
+![reward](https://github.com/cherrytomato1/Findust_Hackathon/blob/master/images/reward2.jpg)
 
